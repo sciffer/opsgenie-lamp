@@ -28,7 +28,8 @@ func UpdateTeamEscalationAction(c *gcli.Context) {
         }
 	var ureq escalation.UpdateEscalationRequest
 	if val,success := getVal("escalation", c); success {
-		err := json.Unmarshal([]byte(val, &ureq))
+		bytes := []byte(val)
+		err := json.Unmarshal(bytes, &ureq)
 		if err != nil {
 			fmt.Printf("%s\n", err.Error())
 			os.Exit(1)
