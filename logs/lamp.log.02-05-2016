@@ -1,0 +1,10 @@
+16/05/02 15:33:28.680 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":2,"error":"RestException[Could not authenticate.]"}
+16/05/02 15:34:49.891 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RestException[Request could not be validated]; nested: FieldValidationException[Property [name] cannot be empty.]; "}
+16/05/02 15:58:05.467 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [test] already exists.]"}
+16/05/02 15:59:03.444 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [test2] already exists.]"}
+16/05/02 17:07:34.940 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [test4] already exists.]"}
+16/05/02 17:14:40.334 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [test4] already exists.]"}
+16/05/02 17:21:39.815 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [testTeam] already exists.]"}
+16/05/02 17:24:11.510 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [testTeam] already exists.]"}
+16/05/02 17:24:50.947 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [testTeam] already exists.]"}
+16/05/02 17:25:01.849 [Warn] Client error occurred; Response Code: 400, Response Body: {"code":3,"error":"RepositoryConditionalCheckFailedException[Team with [name] [testTeam] already exists.]"}

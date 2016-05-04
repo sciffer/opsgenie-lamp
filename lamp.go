@@ -558,8 +558,8 @@ func createTeamCommand() gcli.Command {
 			Usage: "Timezone for the teams on call schedule.",
 		},
 		gcli.StringFlag{
-			Name:  "policy",
-			Usage: "JSON policy structure to overide the default escalation policy for the team.",
+			Name:  "escalation",
+			Usage: "JSON escalation policy structure to overide the default escalation policy for the team.",
 		},
 		gcli.StringSliceFlag{
 			Name:  "M",
