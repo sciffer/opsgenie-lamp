@@ -547,6 +547,118 @@ func disableCommand() gcli.Command {
 	return cmd
 }
 
+func createTeamCommand() gcli.Command {
+	commandFlags := []gcli.Flag{
+		gcli.StringFlag{
+			Name:  "name",
+			Usage: "Name of the team that will be created. Either id or alias must be provided",
+		},
+		gcli.StringFlag{
+			Name:  "timezone",
+			Usage: "Timezone for the teams on call schedule.",
+		},
+		gcli.StringFlag{
+			Name:  "policy",
+			Usage: "JSON policy structure to overide the default escalation policy for the team.",
+		},
+		gcli.StringSliceFlag{
+			Name:  "M",
+			Usage: "Team members list\n\tSyntax: -M user=user@dom.com,role=user -M user=u2@dom.com ...",
+		},
+	}
+	flags := append(commonFlags, commandFlags...)
+	cmd := gcli.Command{Name: "createTeam",
+		Flags:  flags,
+		Usage:  "Creates a team on OpsGenie",
+		Action: command.CreateTeamAction,
+	}
+	return cmd
+}
+
+func listTeamsCommand() gcli.Command {
+	commandFlags := []gcli.Flag{
+		gcli.StringFlag{
+			Name:  "name",
+			Usage: "Name of the team that will be created. Either id or alias must be provided",
+		},
+		gcli.StringFlag{
+			Name:  "timezone",
+			Usage: "Timezone for the teams on call schedule.",
+		},
+		gcli.StringFlag{
+			Name:  "policy",
+			Usage: "JSON policy structure to overide the default escalation policy for the team.",
+		},
+		gcli.StringSliceFlag{
+			Name:  "M",
+			Usage: "Team members list\n\tSyntax: -M user=user@dom.com,role=user -M user=u2@dom.com ...",
+		},
+	}
+	flags := append(commonFlags, commandFlags...)
+	cmd := gcli.Command{Name: "listTeams",
+		Flags:  flags,
+		Usage:  "List teams on OpsGenie",
+		Action: command.ListTeamAction,
+	}
+	return cmd
+}
+
+func updateEscalationCommand() gcli.Command {
+        commandFlags := []gcli.Flag{
+                gcli.StringFlag{
+                        Name:  "id",
+                        Usage: "Id of the escalation that will be updated. required",
+                },
+                gcli.StringFlag{
+                        Name:  "name",
+                        Usage: "Name of the escalation, escalation name will be updated to that name.",
+                },
+                gcli.StringSliceFlag{
+                        Name:  "R",
+                        Usage: "Rule list\n\tSyntax: -R delay=1,notify=ops_oncall,notifyCondition=if-not-acked -R delay=5,notify=user@dom.com,notifyType=next ...",
+                },
+        }
+        flags := append(commonFlags, commandFlags...)
+        cmd := gcli.Command{Name: "updateEscalation",
+                Flags:  flags,
+                Usage:  "Updates escalation on OpsGenie",
+                Action: command.UpdateEscalationAction,
+        }
+        return cmd
+}
+/*
+func updateScheduleCommand() gcli.Command {
+        commandFlags := []gcli.Flag{
+                gcli.StringFlag{
+                        Name:  "id",
+                        Usage: "id of the schedule that will be updated. required",
+                },
+                gcli.StringFlag{
+                        Name:  "name",
+                        Usage: "Name of the schedule, The name will be updated to the specified.",
+                },
+                gcli.StringFlag{
+                        Name:  "timezone",
+                        Usage: "Timezone for the schedule, The timezone will be updated to the specified.",
+                },
+                gcli.BoolFlag{
+                        Name:  "enabled",
+                        Usage: "Enable/disable the schedule.",
+                },
+                gcli.StringSliceFlag{
+                        Name:  "R",
+                        Usage: "Rotations list\n\tSyntax: -R start='2013-02-10 18:00',len=12,end=...,part='group1&user@dom.com',type=daily,res='sday>monday&stime>06:00&etime>06:00|...' -R ....",
+                },
+        }
+        flags := append(commonFlags, commandFlags...)
+        cmd := gcli.Command{Name: "updateSchedule",
+                Flags:  flags,
+                Usage:  "Updates a schedule on OpsGenie",
+                Action: command.UpdateScheduleAction,
+        }
+        return cmd
+}
+*/
 func initCommands(app *gcli.App) {
 	app.Commands = []gcli.Command{
 		createAlertCommand(),
@@ -566,6 +678,9 @@ func initCommands(app *gcli.App) {
 		heartbeatCommand(),
 		enableCommand(),
 		disableCommand(),
+		createTeamCommand(),
+		listTeamsCommand(),
+		updateEscalationCommand(),
 	}
 }
 

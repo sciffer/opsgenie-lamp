@@ -8,6 +8,7 @@ Package command creates various OpsGenie API clients:
  	- Heartbeat
  	- Integration
  	- Policy
+ 	- Team
 And contains command action implementations that uses OpsGenie API clients mentioned above. Commands use OpsGenie Go SDK to send requests to OpsGenie.
 */
 package command
@@ -212,6 +213,62 @@ func NewPolicyClient(c *gcli.Context) (*ogcli.OpsGeniePolicyClient, error) {
 	}
 	printVerboseMessage("Policy Client created..")
 	return polCli, nil
+}
+
+// NewTeamClient instantiates a new OpsGenieTeamClient.
+func NewTeamClient(c *gcli.Context) (*ogcli.OpsGenieTeamClient, error) {
+	cli := initialize(c)
+	teamCli, cliErr := cli.Team()
+
+	if cliErr != nil {
+		message := "Can not create the team client. " + cliErr.Error()
+		fmt.Printf("%s\n", message)
+		return nil, errors.New(message)
+	}
+	printVerboseMessage("Team Client created..")
+	return teamCli, nil
+}
+
+// NewEscalationClient instantiates a new OpsGenieEscalationClient.
+func NewEscalationClient(c *gcli.Context) (*ogcli.OpsGenieEscalationClient, error) {
+	cli := initialize(c)
+	escalationCli, cliErr := cli.Escalation()
+
+	if cliErr != nil {
+		message := "Can not create the escalation client. " + cliErr.Error()
+		fmt.Printf("%s\n", message)
+		return nil, errors.New(message)
+	}
+	printVerboseMessage("Escalation client created..")
+	return escalationCli, nil
+}
+
+// NewScheduleClient instantiates a new OpsGenieScheduleClient.
+func NewScheduleClient(c *gcli.Context) (*ogcli.OpsGenieScheduleClient, error) {
+	cli := initialize(c)
+	scheduleCli, cliErr := cli.Schedule()
+
+	if cliErr != nil {
+		message := "Can not create the schedule client. " + cliErr.Error()
+		fmt.Printf("%s\n", message)
+		return nil, errors.New(message)
+	}
+	printVerboseMessage("Schedule client created..")
+	return scheduleCli, nil
+}
+
+// NewUserClient instantiates a new OpsGenieUserClient.
+func NewUserClient(c *gcli.Context) (*ogcli.OpsGenieUserClient, error) {
+	cli := initialize(c)
+	userCli, cliErr := cli.User()
+
+	if cliErr != nil {
+		message := "Can not create the user client. " + cliErr.Error()
+		fmt.Printf("%s\n", message)
+		return nil, errors.New(message)
+	}
+	printVerboseMessage("User client created..")
+	return userCli, nil
 }
 
 /*
